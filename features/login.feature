@@ -1,12 +1,6 @@
 Feature: Login
   The user wants to access his personal account
 
-  Background:
-    Given table
-      |username|password     |
-      |ayat |a|
-      |sadeen  |s     |
-
   @tag1
   Scenario: login successfully
     Given that the user is not logged in

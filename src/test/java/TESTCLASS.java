@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
         glue = {""}
 )
 
-public class testClass {
+public class TESTCLASS {
 
 }

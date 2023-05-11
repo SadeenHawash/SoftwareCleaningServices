@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1182d5e2-96af-4c7f-9f30-a178a4886600" name="Changes" comment="branch(sadeen_dev)">
+    <list default="true" id="1182d5e2-96af-4c7f-9f30-a178a4886600" name="Changes" comment="changes(CheckBadSmells)">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/NotifyCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/NotifyCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/Discount.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/Discount.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/Register.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/Register.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/login.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/login.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Generate_StatisticsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Generate_StatisticsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/RecordCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/RecordCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TESTCLASS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,24 +48,28 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2PeMUnAbznh7Bf0Ot8f6PtKMhWV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sadee\IdeaProjects\javaProjects\SoftwareCleaningServices" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TESTCLASS">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="SoftwareCleaningServices" />
@@ -67,6 +77,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TESTCLASS" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SoftwareCleaningServices" />
+      <extension name="coverage" runner="jacoco" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TESTCLASS" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="JUnit.TESTCLASS" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TESTCLASS" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -98,12 +128,30 @@
       <option name="project" value="LOCAL" />
       <updated>1683816532176</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changes(CheckBadSmells)">
+      <created>1683819815675</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683819815675</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changes(CheckBadSmells)">
+      <created>1683820451562</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683820451562</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial" />
     <MESSAGE value="branch(sadeen_dev)" />
-    <option name="LAST_COMMIT_MESSAGE" value="branch(sadeen_dev)" />
+    <MESSAGE value="changes(CheckBadSmells)" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes(CheckBadSmells)" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$TESTCLASS.exec" NAME="TESTCLASS Coverage Results" MODIFIED="1683824320320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

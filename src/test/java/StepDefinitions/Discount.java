@@ -1,58 +1,39 @@
 package StepDefinitions;
 
+import static org.junit.Assert.assertTrue;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.Customer;
-
-import static org.junit.Assert.*;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Objects;
 
 public class Discount {
-    private Customer customer;
-    private BigDecimal totalPrice;
-    private BigDecimal expectedPrice;
+    int num=0;
+    int price;
+    boolean flagDis=false;
+    boolean flagDis10=false;
+    boolean flagDis5=false;
 
-    @Given("a customer with name {string} and total spent amount of {int} NIS")
-    public void a_customer_with_name_and_total_spent_amount_of_nis(String name, Integer totalSpentAmount) {
-        customer = new Customer(name, new BigDecimal(totalSpentAmount));
+    public Discount() {
+
     }
 
-    @When("the discount eligibility is checked")
-    public void the_discount_eligibility_is_checked() {
-        expectedPrice = totalPrice;
-        if (!Objects.equals(customer.calculateDiscountedPrice(totalPrice), totalPrice)) {
-            BigDecimal discount = totalPrice.multiply(new BigDecimal("0.1"));
-            expectedPrice = totalPrice.subtract(discount);
-        }
+
+    @Given("the user is login with email {string}")
+    public void the_user_is_login_with_email(String string) {
+        // Write code here that turns the phrase above into concrete actions
+
     }
 
-    @Then("the customer should receive a {int}% discount")
-    public void the_customer_should_receive_a_discount(Integer discountPercentage)  {
-        BigDecimal discount = totalPrice.multiply(new BigDecimal(discountPercentage).divide(new BigDecimal("100"), RoundingMode.DOWN));
-        BigDecimal discountedPrice = totalPrice.subtract(discount);
-        assertEquals(discountedPrice, customer.calculateDiscountedPrice(totalPrice));
+    @Given("the price of the user {string}")
+    public void the_price_of_the_user(String string) {
+        // Write code here that turns the phrase above into concrete actions
+
     }
 
-    @Then("the discounted price should be calculated correctly")
-    public void the_discounted_price_should_be_calculated_correctly() {
-        totalPrice = new BigDecimal("500");
-        assertEquals(expectedPrice, customer.calculateDiscountedPrice(totalPrice));
+    @Then("the user pay the price of product after discount {int}% {string}")
+    public void the_user_pay_the_price_of_product_after_discount(Integer int1, String string) {
+        // Write code here that turns the phrase above into concrete actions
+
     }
 
-    @Then("the customer should not receive a discount")
-    public void the_customer_should_not_receive_a_discount() {
-        totalPrice = new BigDecimal("300");
-        assertEquals(totalPrice, customer.calculateDiscountedPrice(totalPrice));
-    }
-
-    @Then("the original price should be charged")
-    public void the_original_price_should_be_charged() {
-        totalPrice = new BigDecimal("300");
-        assertEquals(totalPrice, customer.calculateDiscountedPrice(totalPrice));
-    }
 }
-

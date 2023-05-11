@@ -1,13 +1,7 @@
-Feature: Frequent Customer Discount
+Feature: Cleaning system discount
 
-  Scenario: Customer qualifies for frequent customer discount
-    Given a customer with name "John" and total spent amount of 500 NIS
-    When the discount eligibility is checked
-    Then the customer should receive a 10% discount
-    And the discounted price should be calculated correctly
 
-  Scenario: Customer does not qualify for frequent customer discount
-    Given a customer with name "Jane" and total spent amount of 300 NIS
-    When the discount eligibility is checked
-    Then the customer should not receive a discount
-    And the original price should be charged
+  Scenario: Discount to the customer by the price
+    Given the user is login with email "ayat@gmail.com"
+    And the price of the user "300"
+    Then the user pay the price of product after discount 10% "300"

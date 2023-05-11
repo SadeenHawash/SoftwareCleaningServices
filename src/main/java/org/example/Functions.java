@@ -1,2 +1,672 @@
-package org.example;public class Functions {
+package org.example;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.io.IOException;
+import java.util.logging.Logger;
+
+public class Functions {
+    Logger logger = Logger.getLogger(" ");
+    Scanner scanner = new Scanner(System.in);
+    Customer customer;
+    static Customer customer2 = new Customer();
+    int choice;
+    static int n;
+    boolean found;
+    Admin admin = new Admin();
+    static final String ORDER_FILE_NAME = "orders.txt";
+    static final String CUSTOMER_FILE_NAME = "View.txt";
+    static final String SPACE = "|                                      |";
+    static final String ENTER_CHOICE = "Enter your choice: ";
+    static final String INVALID_CHOICE = "Invalid choice! Please enter a valid choice.";
+    static final String LINE = "----------------------------------------";
+    private static final String VIEW_FILE = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\View.txt";
+    private String id;
+    private String password;
+    private final ArrayList<Customer> customers = new ArrayList<>();
+    private ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Order> orders = new ArrayList<>();
+    final String[] workersPasswords = new String[]{"12345","12543","76895","43097","55632"};
+    final String[] workersNames = new String[]{"Ahmad","Mohammad","Jalal","Ali","Raed"};
+    final String[] workersPhones = new String[]{"0599286453","0589394912","0569100453","0599230220","0589794966"};
+    final String[] workersAddress = new String[]{"Nablus/Fatayer Street","Nablus/Rafedia Street","Ramallah","Ramallah","Nablus/IbnKhaldoon Street"};
+    public List<Worker> workerList(){
+        Worker worker ;
+        List<Worker> workers1 = new ArrayList<>();
+        for(int i=0;i< 5;i++){
+            worker = new Worker();
+            worker.setId(String.valueOf(i+1));
+            worker.setPassword(workersPasswords[i]);
+            worker.setName(workersNames[i]);
+            worker.setPhone(workersPhones[i]);
+            worker.setAddress(workersAddress[i]);
+            worker.setStatus("Available");
+            workers1.add(worker);
+            //addWorkerToFile(worker);
+        }
+        return workers1;
+
+    }
+    final List<Worker> workers = workerList();
+    DistributeOrders distributor = new DistributeOrders(ORDER_FILE_NAME,"workers.txt");
+    void distribute(){
+        updateOrdersList();
+        for (Worker worker:workers){
+            distributor.addAvailableWorker(worker);
+        }
+        for (Order order:orders){
+            distributor.addWaitingOrder(order);
+        }
+        distributor.distributeOrders();
+        for (Worker worker : distributor.getAvailableWorkers()) {
+            logger.info("\nWorker ID: " + worker.getId() + ", Name: " + worker.getName()+
+                    "\nWorker status: " + worker.getStatus()+"\n\nWorker orders:");
+            for (Order order : worker.getOrders()) {
+                logger.info("\t- Customer ID: " + order.getCustomerId() +", Order ID: " + order.getOrderId() + ", Status: " + order.getStatus());
+            }
+        }
+
+    }
+    boolean searchId(String id) {
+        boolean f = false;
+        try (BufferedReader br = new BufferedReader(new FileReader(CUSTOMER_FILE_NAME))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.contains(id)) {
+                    f = true;
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+        return f;
+    }
+
+    void addCustomerToFile(Customer customer) {
+        try {
+            FileWriter customersFile = new FileWriter(VIEW_FILE, true);
+            customersFile.append(customer.getId()).append(" , ")
+                    .append(customer.getName()).append(" , ")
+                    .append(customer.getPhone()).append(" , ")
+                    .append(customer.getAddress()).append(" , ")
+                    .append(customer.getEmail()).append(" , ")
+                    .append(customer.getPassword()).append(" , ")
+                    .append(String.valueOf(customer.getNumberOfOrders())).append("\n");
+
+            customersFile.close();
+        } catch (IOException ignored) {
+
+        }
+
+    }
+
+    void addOrderToFile(Order order) {
+        try {
+            String orderFile = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\orders.txt";
+            FileWriter ordersFile = new FileWriter(orderFile, true);
+            ordersFile.append(order.getCustomerId()).append(" , ")
+                    .append(String.valueOf(order.getOrderId())).append(" , ")
+                    .append(order.assignedWorker.getId()).append(" , ")
+                    .append(order.assignedWorker.getName()).append(" , ")
+                    .append(String.valueOf(order.getStatus())).append(" , ")
+                    .append(String.valueOf(order.getTotalPrice())).append("\n");
+            ordersFile.close();
+        } catch (IOException ignored) {
+
+        }
+
+    }
+    void addProductToFile(Product product) {
+        try {
+            String productFile = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\products.txt";
+            FileWriter productsFile = new FileWriter(productFile, true);
+            productsFile.append(product.getCustomerId()).append(" , ")
+                    .append(String.valueOf(product.getOrderId())).append(" , ")
+                    .append(product.getName()).append(" , ")
+                    .append(product.getMaterial()).append(" , ")
+                    .append(String.valueOf(product.getArea())).append(" , ")
+                    .append(product.getTreatment()).append(" , ")
+                    .append(product.getPicture()).append("\n");
+
+            productsFile.close();
+        } catch (IOException ignored) {
+
+        }
+    }
+    public void addWorkerToFile(Worker worker) {
+        try {
+            String workerFile = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\workers.txt";
+            FileWriter workersFile = new FileWriter(workerFile, true);
+            workersFile.append(worker.getId()).append(" , ")
+                    .append(worker.getName()).append(" , ")
+                    .append(worker.getPhone()).append(" , ")
+                    .append(worker.getStatus()).append(" , ")
+                    .append(worker.getAddress()).append(" \n");
+
+            workersFile.close();
+        } catch (IOException ignored) {
+
+        }
+
+    }
+
+    void customerSignUp() throws IOException {
+        customer = new Customer();
+        logger.info("Enter your Id: ");
+        id = scanner.next();
+        found = searchId(id);
+        if (found) {
+            logger.info("This account is already existed, Please Sign in.");
+            signInFunction();
+        } else {
+            customer.setId(id);
+            logger.info("Enter your Name: ");
+            customer.setName(scanner.next());
+            logger.info("Enter your Phone: ");
+            customer.setPhone(scanner.next());
+            logger.info("Enter your Address: ");
+            customer.setAddress(scanner.next());
+            logger.info("Enter your Email: ");
+            customer.setEmail(scanner.next());
+            logger.info("\nThank you! Your information have been recorded");
+            logger.info("\nEnter a password: ");
+            customer.setPassword(scanner.next());
+            logger.info("\nRegistration done successfully\n");
+            customers.add(customer);
+            addCustomerToFile(customer);
+        }
+    }
+
+    void inputs() {
+        logger.info("Enter Id: ");
+        id = scanner.next();
+        logger.info("Enter password: ");
+        password = scanner.next();
+    }
+
+    void adminPage() throws IOException {
+        while (true) {
+            adminList();
+            logger.info(ENTER_CHOICE);
+            int c = scanner.nextInt();
+            if (c == 1) {
+                viewCustomersAndWorkers();
+            } else if (c == 2) {
+                viewBusinessStatistics();
+
+            } else if (c == 3) {
+                viewBusinessReports();
+            } else if (c == 4) {
+                viewAllOrders();
+
+            } else if (c == 5) {
+                adminSendEmails();
+            } else if (c == 6) {
+                distribute();
+            } else if (c == 7) {
+                signInFunction();
+            } else System.out.println(INVALID_CHOICE);
+        }
+    }
+
+    private void adminSendEmails() {
+        String[] to = {"ayatd42@gmail.com", "sadeenghawash593@gmail.com"};
+        String subject = "Testing Subject";
+        String body = "Dear customer, "
+                + "\n\n Your Order is ready for Collection,\n an invoice sent to you, Please Check invoices section\n," +
+                "Payment when receiving.";
+        NotifyCustomer.sendEmail(admin.getEmail(), admin.getEmailPassword(), to, subject, body);
+    }
+
+    private void viewBusinessReports() {
+        updateCustomersList();
+        updateOrdersList();
+        logger.info("=================Reports================="+"\nThe  number of customers " + customers.size()+
+                "\nThe  number of orders " + orders.size()+ "\nThe  number of workers " + workers.size()+
+                "\n==========================================\n\n");
+    }
+
+    private void viewBusinessStatistics() {
+        int totalDeliveredItems = 10;
+        double totalCash = 5000;
+        double totalDiscount = 500;
+        double totalPaid = 4500;
+        double totalDebts = 0.0;
+
+        logger.info("=================statistics=================\n"+"============================================\n"+
+                "-->Total Delivered Items: " + totalDeliveredItems+"\n-->Total Cash: $" + totalCash+"\n-->Total Discount: $" + totalDiscount+
+                "\n-->Total Paid: $" + totalPaid+"\n-->Total Debts: $" + totalDebts+"\n============================================\n\n");
+    }
+
+    private void viewCustomersAndWorkers() {
+        updateCustomersList();
+        logger.info("List of Customers: \n");
+        for (Customer customer1 : customers) {
+            ArrayList<Order> orders1 = (ArrayList<Order>) getOrdersFromFile(ORDER_FILE_NAME, customer1.getId());
+            logger.info(customer1.getId() + "\t  "+customer1.getName() + "  "+customer1.getAddress() + "  "+customer1.getPhone() + "  "+customer1.getEmail() + "  "+orders1.size() + "  \n");
+        }
+        logger.info("-----------------------------------------------------------------------\n"+"List of Workers: \n");
+        for (Worker worker : workers) {
+            logger.info(worker.getId() + "\t  "+worker.getName() + "  "+worker.getAddress() + "  "+worker.getPhone() + "  "+worker.getStatus() + "  \n");
+        }
+    }
+
+    private void viewAllOrders() {
+        updateCustomersList();
+        for (Customer customer1 : customers) {
+            orders = (ArrayList<Order>) getOrdersFromFile(ORDER_FILE_NAME, customer1.getId());
+            logger.info("-----------------------------------------------\n"+customer1.getId() + "  "+customer1.getName() + "  "+customer1.getAddress() + "  "+customer1.getPhone() + "  "+customer1.getEmail() + "  "+orders.size() + "  \n");
+            for (Order order : orders) {
+                logger.info("\n"+order.getOrderId() + "  " +order.getStatus() + "  "+order.getTotalPrice() + "  \n");
+                products = (ArrayList<Product>) getProductsFromFile("products.txt", customer1.getId(), String.valueOf(order.getOrderId()));
+                for (Product product : products) {
+                    logger.info(product.getName() + "  "+product.getMaterial() + "  "+product.getArea() + "  "+product.getTreatment() + "  "+product.getPicture() + "  \n");
+                }
+            }
+            logger.info("\n\n");
+        }
+    }
+
+    void signInFunction() throws IOException {
+        int c;
+        signInPageList();
+        logger.info(ENTER_CHOICE);
+        choice = scanner.nextInt();
+        logger.info("\nEnter Id: ");
+        id = scanner.next();
+        logger.info("\nEnter password: ");
+        password = scanner.next();
+        switch (choice){
+            case 1:
+                if (id.equals(admin.getAdminId()) && password.equals(admin.getAdminPassword())) {
+                    adminPage();
+                } else {
+                    logger.info("\nSomething went wrong!, Try again.");
+                    inputs();
+                }
+                break;
+            case 2:
+                updateCustomersList();
+                for(Customer customer1: customers){
+                    if(customer1.getId().equals(id)){
+                        if(customer1.getPassword().equals(password)) {
+                            while (true) {
+                                customerPageList();
+                                c = scanner.nextInt();
+                                customerOptions(c);
+                            }
+                        }else{
+                            logger.info("\nSigning in failed, Please check your entered password\n");
+                            logger.info("\nEnter password: ");
+                            password = scanner.next();
+                        }
+                    }else {
+                        logger.info("\nThis account is not exist, Please Sign up.\n");
+                        customerSignUp();
+                    }
+                }
+                break;
+            case 3:
+                for(Worker worker: workers){
+                    if(worker.getId().equals(id)){
+                        if(worker.getPassword().equals(password)) {
+                            while (true) {
+                                workerPageList();
+                                c = scanner.nextInt();
+                                workerOptions(c);
+                            }
+                        }else{
+                            logger.info("\nSigning in failed, Please check your entered password\n");
+                            logger.info("\nEnter password: ");
+                            password = scanner.next();
+                        }
+                    }else {
+                        logger.info("\nThis account is not exist, Please check the inputs.\n");
+                    }
+                }
+                break;
+
+            default:    logger.info("\n"+INVALID_CHOICE);
+
+        }
+    }
+    void updateCustomersList() {
+        String line;
+        customers.clear();
+        FileReader customersFileReader;
+        try {
+            customersFileReader = new FileReader(VIEW_FILE);
+            BufferedReader lineReader = new BufferedReader(customersFileReader);
+            while ((line = lineReader.readLine()) != null) {
+                if (line.isEmpty()) continue;
+                customers.add(Customer.getCustomerFromLine(line));
+            }
+            lineReader.close();
+            customersFileReader.close();
+        } catch (IOException ignored) {
+
+        }
+    }
+    private void updateOrdersList() {
+        String orderFile = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\orders.txt";
+        String line;
+        orders.clear();
+        FileReader ordersFileReader;
+        try {
+            ordersFileReader = new FileReader(orderFile);
+            BufferedReader lineReader = new BufferedReader(ordersFileReader);
+            while ((line = lineReader.readLine()) != null) {
+                if (line.isEmpty()) continue;
+                orders.add(Order.getOrderFromLine(line));
+            }
+            lineReader.close();
+            ordersFileReader.close();
+        } catch (IOException e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static void updateFile(String filePath, String oldValue, String newValue) throws IOException {
+        RandomAccessFile file = new RandomAccessFile(filePath, "rw");
+        String line;
+        long lastPos = 0;
+        while ((line = file.readLine()) != null) {
+            if (line.contains(oldValue)) {
+                String updatedLine = line.replace(oldValue, newValue);
+                file.seek(lastPos);
+                file.writeBytes(updatedLine);
+            }
+            lastPos = file.getFilePointer();
+        }
+        file.close();
+    }
+
+    public static void replaceLastValueInLine(String fileName, int lineNumber, String newValue) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            StringBuilder sb = new StringBuilder();
+            String line;
+            int currentLine = 1;
+            while ((line = reader.readLine()) != null) {
+                if (currentLine == lineNumber) {
+
+                    String[] values = line.split(" , ");
+                    int oldValue = Integer.parseInt(values[values.length - 1]);
+                    int tmp = oldValue + Integer.parseInt(newValue);
+                    values[values.length - 1] = String.valueOf(tmp);
+                    line = String.join(" , ", values);
+                }
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                currentLine++;
+            }
+            try (FileWriter writer = new FileWriter(fileName)) {
+                writer.write(sb.toString());
+            } catch (IOException ignored) {
+
+            }
+        } catch (IOException ignored) {
+
+        }
+    }
+    public static int getLineIndexById(String fileName, String id) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            int currentLine = 1;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains(id)) {
+                    return currentLine;
+                }
+                currentLine++;
+            }
+        } catch (IOException ignored) {
+
+        }
+        return -1;
+    }
+
+    public static List<Product> getProductsFromFile(String fileName, String customerId, String orderId) {
+        List<Product> products1 = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(" , ");
+                String custId = values[0];
+                String ordId = values[1];
+                String proName = values[2];
+                String proMaterial = values[3];
+                float proArea = Float.parseFloat(values[4]);
+                String proTreatment = values[5];
+                String proPic = values[6];
+                if (custId.equals(customerId) && ordId.equals(orderId)) {
+                    products1.add(new Product(proName, proMaterial, proArea, proTreatment, proPic));
+                }
+            }
+        } catch (IOException ignored) {
+
+        }
+        return products1;
+    }
+    public static List<Order> getOrdersFromFile(String fileName, String customerId) {
+        ArrayList<Order> orders1 = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(" , ");
+                String custId = values[0];
+                int ordId = Integer.parseInt(values[1]);
+                String workerId = values[2];
+                String workerName = values[3];
+                String status = values[4];
+                double total = Double.parseDouble(values[5]);
+                if (custId.equals(customerId)) {
+                    orders1.add(new Order(ordId, workerName, workerId, total, status));
+                }
+            }
+        } catch (IOException ignored) {
+
+        }
+        return orders1;
+    }
+    public void customerAddOrder(){
+
+    }
+    public void customerOptions(int n) throws IOException {
+        switch (n){
+            case 1:
+                updateCustomersList();
+                logger.info("Which info you want to update?\n1. Name  2.Phone  3. Address  4. Email"+"\n"+ENTER_CHOICE);
+                updateCustomerProfile(scanner.nextInt());
+                break;
+            case 2:
+                updateOrdersList();
+                n = orders.size();
+                updateCustomersList();
+                customer2.setId(id);
+                int l = getLineIndexById(CUSTOMER_FILE_NAME, id);
+                System.out.println(l);
+                do {
+                    n++;
+                    Order order = new Order(n);
+                    order.setStatus(Order.Status.WAITING);
+                    order.setCustomerId(id);
+                    do {
+                        Product product = new Product();
+                        logger.info("-----Product Information-----\n"+"Enter Name [Carpet,Cover]: ");
+                        product.setName(scanner.next());
+                        logger.info("Enter Material [Wool,Nylon,Olefin,Polyester,Triexta,Cotton,Microfiber,Velvet]: ");
+                        product.setMaterial(scanner.next());
+                        logger.info("Enter Area [Height X Width]: ");
+                        float area = scanner.nextFloat();
+                        product.setArea(area);
+                        logger.info("Is required special treatment? [Yes,No]: ");
+                        product.setTreatment(scanner.next());
+                        logger.info("Enter picture [picture path]: ");
+                        product.setPicture(scanner.next());
+                        product.setCustomerId(id);
+                        product.setOrderId(n);
+                        order.addProduct(product);
+                        double t = area * 10;
+                        order.setTotalPrice(t);
+                        products.add(product);
+                        addProductToFile(product);
+                        logger.info("Add another product? [Yes,No]: ");
+                    } while (!scanner.next().equalsIgnoreCase("No"));
+                    customer2.addOrder(order);
+                    orders.add(order);
+                    customer2.setNumberOfOrders(orders.size());
+                    addOrderToFile(order);
+                    logger.info("Add another order? [Yes,No]: ");
+                } while (!scanner.next().equalsIgnoreCase("No"));
+                replaceLastValueInLine(CUSTOMER_FILE_NAME, l, String.valueOf(customer2.getOrders().size()));
+                break;
+            case 3:
+                logger.info("\n\n");
+                break;
+            case 4:
+                logger.info("\n");
+                break;
+            case 5:
+                updateCustomersList();
+                for (Customer customer1 : customers) {
+                    if (customer1.getId().equals(id)) {
+                        logger.info(LINE+"\n|                INVOICE               |\n"+LINE);
+                        Invoice invoice = new Invoice(customer1);
+                        invoice.invoiceRes(customer1);
+                        logger.info(LINE);
+                    }
+                }
+                break;
+            case 6:
+                logger.info("\n\n\n");
+                break;
+            case 7:
+                signInFunction();
+                break;
+            default: logger.info(INVALID_CHOICE);
+        }
+    }
+    public void updateCustomerProfile(int n) throws IOException {
+        String tmp;
+        for (Customer customer1 : customers) {
+            if (customer1.getId().equals(id)) {
+                switch (n){
+                    case 1:
+                        logger.info("Enter New Name: ");
+                        tmp = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getName(), tmp);
+                        customer1.setName(tmp);
+                        break;
+                    case 2:
+                        logger.info("Enter New Phone: ");
+                        tmp = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getPhone(), tmp);
+                        customer1.setPhone(tmp);
+                        break;
+                    case 3:
+                        logger.info("Enter New Address: ");
+                        tmp= scanner.next();
+                        updateFile(VIEW_FILE, customer1.getAddress(), tmp);
+                        customer1.setAddress(tmp);
+                        break;
+                    case 4:
+                        logger.info("Enter New Email: ");
+                        tmp = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getEmail(), tmp);
+                        customer1.setEmail(tmp);
+                        break;
+                    default:    logger.info(INVALID_CHOICE);
+                }
+            }
+        }
+    }
+    public void updateWorkerProfile(int n) throws IOException {
+        String fileWorker = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\workers.txt";
+        String tmp;
+        for (Worker worker : workers) {
+            if (worker.getId().equals(id)) {
+                if (n == 1) {
+                    logger.info("Enter New Name: ");
+                    tmp= scanner.next();
+                    updateFile(fileWorker, worker.getName(), tmp);
+                    worker.setName(tmp);
+                } else if (n == 2) {
+                    logger.info("Enter New Phone: ");
+                    tmp = scanner.next();
+                    updateFile(fileWorker, worker.getPhone(), tmp);
+                    worker.setPhone(tmp);
+                } else if (n == 3) {
+                    logger.info("Enter New Address: ");
+                    tmp = scanner.next();
+                    updateFile(fileWorker, worker.getAddress(), tmp);
+                    worker.setAddress(tmp);
+                } else logger.info(INVALID_CHOICE);
+            }
+        }
+    }
+    public void workerOptions(int n) throws IOException {
+        switch (n){
+            case 1:
+                logger.info("Which info you want to update?\n1. Name  2.Phone  3. Address "+"\n"+ENTER_CHOICE);
+                int c = scanner.nextInt();
+                updateWorkerProfile(c);
+                break;
+            case 2:
+                updateOrdersList();
+                for (Worker worker:workers){
+                    distributor.addAvailableWorker(worker);
+                }
+                for (Order order:orders){
+                    distributor.addWaitingOrder(order);
+                }
+                distributor.distributeOrders();
+                for (Worker worker : distributor.getAvailableWorkers()) {
+                    if(worker.getId().equals(id)){
+                        logger.info("\nWorker ID: " + worker.getId() + ", Name: " + worker.getName()+
+                                "\nWorker status: " + worker.getStatus()+"\n\tWorker orders:");
+                        for (Order order : worker.getOrders()) {
+                            logger.info("\t\t- Customer ID: " + order.getCustomerId() +", Order ID: " + order.getOrderId() + ", Status: " + order.getStatus());
+                        }
+                    }
+                }
+                logger.info("\n\n");
+                break;
+            case 3:
+                logger.info("\n\n");
+                break;
+            case 4:
+                signInFunction();
+                break;
+            default:    logger.info(INVALID_CHOICE);
+
+        }
+    }
+    public void adminList(){
+        System.out.print("\n--------- Welcome to Admin Page --------\n"+SPACE+
+                "\n|   1. View Customer/Product/Workers   |"+"\n|   2. View Business Statistics        |"+
+                "\n|   3. View Business Reports           |"+"\n|   4. View All Orders                 |"+
+                "\n|   5. Notify Customer By Email        |"+"\n|   6. View Workers with their missions|"+
+                "\n|   7. Log Out                         |\n"+SPACE+"\n"+LINE+"\n"
+        );
+    }
+    public void signInPageList(){
+        System.out.print("\n---------- Sign in Page ----------"+"\n|                                |"+
+                "\n|        1. Administrator        |"+"\n|        2. Customer             |"+
+                "\n|        3. Worker               |"+"\n|                                |"+
+                "\n----------------------------------\n" );
+    }
+    public void customerPageList(){
+        System.out.print("\n------- Welcome to Customer Page -------\n"+SPACE+"\n|        1. Update My Profile          |"+
+                "\n|        2. Make An Order              |"+"\n|        3. Update Order               |"+
+                "\n|        4. Cancel Order               |"+ "\n|        5. Invoices                   |"+
+                "\n|        6. Delete My Profile          |"+"\n|        7. Log Out                    |\n"+SPACE+"\n"+LINE+"\n"
+                +ENTER_CHOICE );
+    }
+    public void workerPageList(){
+        System.out.print("\n-------- Welcome to Worker Page --------\n"+SPACE+
+                "\n|        1. Update My Profile          |"+"\n|        2. View My Missions           |"+
+                "\n|        3. Update Order Status        |"+"\n|        4. Log Out                    |\n"+
+                SPACE+ "\n----------------------------------------\n"+ENTER_CHOICE);
+    }
 }

@@ -1,0 +1,7 @@
+12029024 , 1 , Carpet , Wool , 20.0 , No , C:\Users\sadee\IdeaProjects
+12029024 , 2 , Carpet , Nylon , 30.0 , No , C:\Users\sadee\IdeaProjects
+12029024 , 3 , Cover , Wool , 20.0 , No , C:\Users\sadee\IdeaProjects
+12029025 , 4 , Cover , Cotton , 20.0 , Yes , C:\Users\sadee\IdeaProjects
+12029024 , 5 , Cover , Nylon , 20.0 , No , C:\Users\sadee\IdeaProjects
+12029024 , 5 , Cover , Wool , 30.0 , Yes , C:\Users\sadee\IdeaProjects
+12029024 , 6 , Carpet , Wool , 30.0 , No , C:\Users\sadee\IdeaProjects

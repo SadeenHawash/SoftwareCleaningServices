@@ -7,18 +7,20 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 public class Functions {
-    Logger logger = Logger.getLogger(" ");
+    static Logger logger = Logger.getLogger(" ");
     Scanner scanner = new Scanner(System.in);
     Customer customer;
     static Customer customer2 = new Customer();
     int choice;
     static int n;
+    String tmp;
     boolean found;
     Admin admin = new Admin();
     static final String ORDER_FILE_NAME = "orders.txt";
     static final String CUSTOMER_FILE_NAME = "View.txt";
     static final String SPACE = "|                                      |";
     static final String ENTER_CHOICE = "Enter your choice: ";
+    static final String ENTER_PASSWORD= "\nEnter Password ";
     static final String INVALID_CHOICE = "Invalid choice! Please enter a valid choice.";
     static final String LINE = "----------------------------------------";
     private static final String VIEW_FILE = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\View.txt";
@@ -78,7 +80,7 @@ public class Functions {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
+            logger.info("Error: " + e.getMessage());
         }
         return f;
     }
@@ -95,8 +97,8 @@ public class Functions {
                     .append(String.valueOf(customer.getNumberOfOrders())).append("\n");
 
             customersFile.close();
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
 
     }
@@ -112,8 +114,8 @@ public class Functions {
                     .append(String.valueOf(order.getStatus())).append(" , ")
                     .append(String.valueOf(order.getTotalPrice())).append("\n");
             ordersFile.close();
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
 
     }
@@ -130,8 +132,8 @@ public class Functions {
                     .append(product.getPicture()).append("\n");
 
             productsFile.close();
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
     }
     public void addWorkerToFile(Worker worker) {
@@ -145,8 +147,8 @@ public class Functions {
                     .append(worker.getAddress()).append(" \n");
 
             workersFile.close();
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
 
     }
@@ -181,7 +183,7 @@ public class Functions {
     void inputs() {
         logger.info("Enter Id: ");
         id = scanner.next();
-        logger.info("Enter password: ");
+        logger.info(ENTER_PASSWORD);
         password = scanner.next();
     }
 
@@ -206,7 +208,7 @@ public class Functions {
                 distribute();
             } else if (c == 7) {
                 signInFunction();
-            } else System.out.println(INVALID_CHOICE);
+            } else logger.info(INVALID_CHOICE);
         }
     }
 
@@ -222,9 +224,10 @@ public class Functions {
     private void viewBusinessReports() {
         updateCustomersList();
         updateOrdersList();
-        logger.info("=================Reports================="+"\nThe  number of customers " + customers.size()+
+        tmp = "=================Reports================="+"\nThe  number of customers " + customers.size()+
                 "\nThe  number of orders " + orders.size()+ "\nThe  number of workers " + workers.size()+
-                "\n==========================================\n\n");
+                "\n==========================================\n\n";
+        logger.info(tmp);
     }
 
     private void viewBusinessStatistics() {
@@ -233,10 +236,10 @@ public class Functions {
         double totalDiscount = 500;
         double totalPaid = 4500;
         double totalDebts = 0.0;
-
-        logger.info("=================statistics=================\n"+"============================================\n"+
+        tmp = "=================statistics=================\n"+"============================================\n"+
                 "-->Total Delivered Items: " + totalDeliveredItems+"\n-->Total Cash: $" + totalCash+"\n-->Total Discount: $" + totalDiscount+
-                "\n-->Total Paid: $" + totalPaid+"\n-->Total Debts: $" + totalDebts+"\n============================================\n\n");
+                "\n-->Total Paid: $" + totalPaid+"\n-->Total Debts: $" + totalDebts+"\n============================================\n\n";
+        logger.info(tmp);
     }
 
     private void viewCustomersAndWorkers() {
@@ -244,7 +247,8 @@ public class Functions {
         logger.info("List of Customers: \n");
         for (Customer customer1 : customers) {
             ArrayList<Order> orders1 = (ArrayList<Order>) getOrdersFromFile(ORDER_FILE_NAME, customer1.getId());
-            logger.info(customer1.getId() + "\t  "+customer1.getName() + "  "+customer1.getAddress() + "  "+customer1.getPhone() + "  "+customer1.getEmail() + "  "+orders1.size() + "  \n");
+            tmp = customer1.getId() + "\t  "+customer1.getName() + "  "+customer1.getAddress() + "  "+customer1.getPhone() + "  "+customer1.getEmail() + "  "+orders1.size() + "  \n";
+            logger.info(tmp);
         }
         logger.info("-----------------------------------------------------------------------\n"+"List of Workers: \n");
         for (Worker worker : workers) {
@@ -256,7 +260,8 @@ public class Functions {
         updateCustomersList();
         for (Customer customer1 : customers) {
             orders = (ArrayList<Order>) getOrdersFromFile(ORDER_FILE_NAME, customer1.getId());
-            logger.info("-----------------------------------------------\n"+customer1.getId() + "  "+customer1.getName() + "  "+customer1.getAddress() + "  "+customer1.getPhone() + "  "+customer1.getEmail() + "  "+orders.size() + "  \n");
+            tmp ="-----------------------------------------------\n"+customer1.getId() + "  "+customer1.getName() + "  "+customer1.getAddress() + "  "+customer1.getPhone() + "  "+customer1.getEmail() + "  "+orders.size() + "  \n";
+            logger.info(tmp);
             for (Order order : orders) {
                 logger.info("\n"+order.getOrderId() + "  " +order.getStatus() + "  "+order.getTotalPrice() + "  \n");
                 products = (ArrayList<Product>) getProductsFromFile("products.txt", customer1.getId(), String.valueOf(order.getOrderId()));
@@ -298,7 +303,7 @@ public class Functions {
                             }
                         }else{
                             logger.info("\nSigning in failed, Please check your entered password\n");
-                            logger.info("\nEnter password: ");
+                            logger.info(ENTER_PASSWORD);
                             password = scanner.next();
                         }
                     }else {
@@ -318,7 +323,7 @@ public class Functions {
                             }
                         }else{
                             logger.info("\nSigning in failed, Please check your entered password\n");
-                            logger.info("\nEnter password: ");
+                            logger.info(ENTER_PASSWORD);
                             password = scanner.next();
                         }
                     }else {
@@ -344,8 +349,8 @@ public class Functions {
             }
             lineReader.close();
             customersFileReader.close();
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
     }
     private void updateOrdersList() {
@@ -363,7 +368,7 @@ public class Functions {
             lineReader.close();
             ordersFileReader.close();
         } catch (IOException e){
-            throw new RuntimeException(e);
+            logger.info("An error occurred: " + e.getMessage());
         }
 
     }
@@ -401,13 +406,16 @@ public class Functions {
                 sb.append(System.lineSeparator());
                 currentLine++;
             }
-            try (FileWriter writer = new FileWriter(fileName)) {
-                writer.write(sb.toString());
-            } catch (IOException ignored) {
-
-            }
-        } catch (IOException ignored) {
-
+            innerTry(fileName, sb);
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
+        }
+    }
+    public static void innerTry(String fileName, StringBuilder sb) {
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(sb.toString());
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
     }
     public static int getLineIndexById(String fileName, String id) {
@@ -420,8 +428,8 @@ public class Functions {
                 }
                 currentLine++;
             }
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
         return -1;
     }
@@ -443,8 +451,8 @@ public class Functions {
                     products1.add(new Product(proName, proMaterial, proArea, proTreatment, proPic));
                 }
             }
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
         return products1;
     }
@@ -464,16 +472,13 @@ public class Functions {
                     orders1.add(new Order(ordId, workerName, workerId, total, status));
                 }
             }
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            logger.info("An error occurred: " + e.getMessage());
         }
         return orders1;
     }
-    public void customerAddOrder(){
-
-    }
-    public void customerOptions(int n) throws IOException {
-        switch (n){
+    public void customerOptions(int x) throws IOException {
+        switch (x){
             case 1:
                 updateCustomersList();
                 logger.info("Which info you want to update?\n1. Name  2.Phone  3. Address  4. Email"+"\n"+ENTER_CHOICE);
@@ -643,7 +648,7 @@ public class Functions {
         }
     }
     public void adminList(){
-        System.out.print("\n--------- Welcome to Admin Page --------\n"+SPACE+
+        logger.info("\n--------- Welcome to Admin Page --------\n"+SPACE+
                 "\n|   1. View Customer/Product/Workers   |"+"\n|   2. View Business Statistics        |"+
                 "\n|   3. View Business Reports           |"+"\n|   4. View All Orders                 |"+
                 "\n|   5. Notify Customer By Email        |"+"\n|   6. View Workers with their missions|"+
@@ -651,20 +656,20 @@ public class Functions {
         );
     }
     public void signInPageList(){
-        System.out.print("\n---------- Sign in Page ----------"+"\n|                                |"+
+       logger.info("\n---------- Sign in Page ----------"+"\n|                                |"+
                 "\n|        1. Administrator        |"+"\n|        2. Customer             |"+
                 "\n|        3. Worker               |"+"\n|                                |"+
                 "\n----------------------------------\n" );
     }
     public void customerPageList(){
-        System.out.print("\n------- Welcome to Customer Page -------\n"+SPACE+"\n|        1. Update My Profile          |"+
+        logger.info("\n------- Welcome to Customer Page -------\n"+SPACE+"\n|        1. Update My Profile          |"+
                 "\n|        2. Make An Order              |"+"\n|        3. Update Order               |"+
                 "\n|        4. Cancel Order               |"+ "\n|        5. Invoices                   |"+
                 "\n|        6. Delete My Profile          |"+"\n|        7. Log Out                    |\n"+SPACE+"\n"+LINE+"\n"
                 +ENTER_CHOICE );
     }
     public void workerPageList(){
-        System.out.print("\n-------- Welcome to Worker Page --------\n"+SPACE+
+        logger.info("\n-------- Welcome to Worker Page --------\n"+SPACE+
                 "\n|        1. Update My Profile          |"+"\n|        2. View My Missions           |"+
                 "\n|        3. Update Order Status        |"+"\n|        4. Log Out                    |\n"+
                 SPACE+ "\n----------------------------------------\n"+ENTER_CHOICE);

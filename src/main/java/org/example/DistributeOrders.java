@@ -3,8 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class DistributeOrders {
+    static Logger logger = Logger.getLogger(" ");
     private final List<Order> waitingOrders;
     private final List<Worker> availableWorkers;
     private final String ordersFile;
@@ -72,7 +74,6 @@ public class DistributeOrders {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(" , ");
-                //int id = Integer.parseInt(parts[1]);
                 String customerId = parts[0];
                 String total = parts[5];
                 String status = parts[4];
@@ -91,7 +92,7 @@ public class DistributeOrders {
 
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Orders file not found.");
+            logger.info("Orders file not found.");
         }
     }
 
@@ -105,7 +106,7 @@ public class DistributeOrders {
 
             writer.close();
         } catch (IOException e) {
-            System.out.println("Error saving orders to file.");
+            logger.info("Error saving orders to file.");
         }
     }
 
@@ -118,7 +119,6 @@ public class DistributeOrders {
                 String line = scanner.nextLine();
                 String[] parts = line.split(" , ");
                 int id = Integer.parseInt((parts[0]));
-                // String name = parts[1];
                 String status = parts[2];
                 Worker worker = new Worker(id, status);
                 availableWorkers.add(worker);
@@ -126,7 +126,7 @@ public class DistributeOrders {
 
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Workers file not found.");
+            logger.info("Workers file not found.");
         }
     }
 
@@ -140,7 +140,7 @@ public class DistributeOrders {
 
             writer.close();
         } catch (IOException e) {
-            System.out.println("Error saving workers to file.");
+            logger.info("Error saving workers to file.");
         }
     }
     public static void clearFile(String fileName) {
@@ -148,9 +148,9 @@ public class DistributeOrders {
             FileWriter writer = new FileWriter(fileName);
             writer.write("");
             writer.close();
-            System.out.println("File contents cleared.");
+            logger.info("File contents cleared.");
         } catch (IOException e) {
-            System.out.println("An error occurred: " + e.getMessage());
+            logger.info("An error occurred: " + e.getMessage());
         }
     }
 }

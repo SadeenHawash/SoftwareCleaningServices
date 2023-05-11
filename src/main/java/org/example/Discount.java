@@ -14,9 +14,13 @@ class Discount {
     }
 
     public void printDetails() {
-        logger.info("Customer Name: " + this.customerName);
-        logger.info("Total Spending: " + this.totalSpending);
-        logger.info("Discount Rate: " + this.discountRate + "%");
+        String tmp;
+        tmp = "Customer Name: " + this.customerName;
+        logger.info(tmp);
+        tmp ="Total Spending: " + this.totalSpending;
+        logger.info(tmp);
+        tmp ="Discount Rate: " + this.discountRate + "%";
+        logger.info(tmp);
     }
 }
 

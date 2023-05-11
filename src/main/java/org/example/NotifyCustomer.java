@@ -20,6 +20,7 @@ public class NotifyCustomer {
         props.put("mail.smtp.starttls.enable", "true");
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
+                    @Override
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(from, password);
                     }
@@ -33,10 +34,11 @@ public class NotifyCustomer {
                 message.setSubject(subject);
                 message.setText(body);
                 Transport.send(message);
-                logger.info("Email sent to " + recipient);
+                String t ="Email sent to " + recipient;
+                logger.info(t);
             }
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            logger.info("Error: " + e.getMessage());
         }
         return true;
     }

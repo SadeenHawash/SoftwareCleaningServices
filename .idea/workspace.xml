@@ -4,50 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1182d5e2-96af-4c7f-9f30-a178a4886600" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/Discount.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/DistributeOrders.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/GenerateInvoice.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/GenerateReports.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/Generate_Statistics.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/NotifyCustomer.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/Order.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/Register.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/Track_Status.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/login.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Discount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Invoice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/NotifyCustomer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/OrderStatistics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Worker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Discount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/DistributeOrders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/GenerateInvoice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Generate_StatisticsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/NotifyCustomerSteps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/OrderSteps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/RecordCustomer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/testClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/workers.txt" afterDir="false" />
-    </list>
+    <list default="true" id="1182d5e2-96af-4c7f-9f30-a178a4886600" name="Changes" comment="initial" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,6 +65,25 @@
       <option name="presentableId" value="Default" />
       <updated>1683813112574</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial">
+      <created>1683816360842</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683816360842</updated>
+    </task>
+    <task id="LOCAL-00002" summary="initial">
+      <created>1683816369901</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683816369901</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial" />
   </component>
 </project>

@@ -20,6 +20,7 @@ public class Functions {
     static final String CUSTOMER_FILE_NAME = "View.txt";
     static final String SPACE = "|                                      |";
     static final String ENTER_CHOICE = "Enter your choice: ";
+    static final String ENTER_PASSWORD= "\nEnter Password ";
     static final String INVALID_CHOICE = "Invalid choice! Please enter a valid choice.";
     static final String LINE = "----------------------------------------";
     private static final String VIEW_FILE = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\View.txt";
@@ -182,7 +183,7 @@ public class Functions {
     void inputs() {
         logger.info("Enter Id: ");
         id = scanner.next();
-        logger.info("Enter password: ");
+        logger.info(ENTER_PASSWORD);
         password = scanner.next();
     }
 
@@ -302,7 +303,7 @@ public class Functions {
                             }
                         }else{
                             logger.info("\nSigning in failed, Please check your entered password\n");
-                            logger.info("\nEnter password: ");
+                            logger.info(ENTER_PASSWORD);
                             password = scanner.next();
                         }
                     }else {
@@ -322,7 +323,7 @@ public class Functions {
                             }
                         }else{
                             logger.info("\nSigning in failed, Please check your entered password\n");
-                            logger.info("\nEnter password: ");
+                            logger.info(ENTER_PASSWORD);
                             password = scanner.next();
                         }
                     }else {

@@ -17,7 +17,6 @@ public class Discount {
 
     }
 
-
     @Given("the user is login with email {string}")
     public void the_user_is_login_with_email(String string) {
         // Write code here that turns the phrase above into concrete actions

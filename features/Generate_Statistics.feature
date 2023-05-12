@@ -17,5 +17,5 @@ Feature: Generate Business Statistics
 
   Scenario: Calculate total debts
     Given a list of all completed orders
-    When the total amount owed by customers is calculated
+    When the correct total debts amount is calculated
     Then the correct total debts amount should be displayed

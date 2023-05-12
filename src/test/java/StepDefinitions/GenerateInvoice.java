@@ -28,6 +28,7 @@ public class GenerateInvoice {
         totalPrice = order.getTotalPrice();
         address = customer.getAddress();
         invoice = new Invoice(customer);
+        invoice.invoiceRes(customer);
     }
     @Then("the invoice should include the delivery information, price, address, and items to be cleaned")
     public void theInvoiceShouldIncludeTheDeliveryInformationPriceAddressAndItemsToBeCleaned() {

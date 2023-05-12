@@ -1,6 +1,5 @@
 package org.example;
 import java.util.Properties;
-import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -9,8 +8,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import static org.example.Functions.printing;
+
 public class NotifyCustomer {
-    static Logger logger = Logger.getLogger(" ");
     public static boolean sendEmail(String from, String password, String[] to, String subject, String body) {
         // SMTP server configuration
         Properties props = new Properties();
@@ -35,10 +35,10 @@ public class NotifyCustomer {
                 message.setText(body);
                 Transport.send(message);
                 String t ="Email sent to " + recipient;
-                logger.info(t);
+                printing.printSomething(t);
             }
         } catch (MessagingException e) {
-            logger.info("Error: " + e.getMessage());
+            printing.printSomething("Error: " + e.getMessage());
         }
         return true;
     }

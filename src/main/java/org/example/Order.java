@@ -13,6 +13,15 @@ public class Order {
     Worker assignedWorker = new Worker();
     private double totalPrice;
 
+    public Order(int orderId, String orderCustomerId, int workerId, String workerName, Status status, double price) {
+        this.orderId = orderId;
+        this.customerId = orderCustomerId;
+        this.assignedWorker.setId(String.valueOf(workerId));
+        this.assignedWorker.setName(workerName);
+        this.status = status;
+        this.totalPrice = price;
+    }
+
     public static Order getOrderFromLine(String line) {
         Order order = new Order();
         Worker worker = new Worker();
@@ -104,6 +113,10 @@ public class Order {
     public void assignedWorker(Worker assignedWorker) {
         this.assignedWorker = assignedWorker;
         status = Status.IN_TREATMENT;
+    }
+
+    public Worker getAssignedWorker() {
+        return assignedWorker;
     }
 
     @Override

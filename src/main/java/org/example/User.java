@@ -1,13 +1,11 @@
 package org.example;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import static org.example.Functions.printing;
 
 public class User {
 
-    static Logger logger = Logger.getLogger(User.class.getName());
     String password;
     String username;
     String address;
@@ -73,7 +71,7 @@ public class User {
 
         }
         else
-            logger.log(Level.INFO,"you Should login first");
+            printing.printSomething("you Should login first");
     }
     public boolean isRegest(String string) {
 

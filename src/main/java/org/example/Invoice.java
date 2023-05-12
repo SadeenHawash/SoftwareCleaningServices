@@ -1,10 +1,10 @@
 package org.example;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
+import static org.example.Functions.printing;
 
 public class Invoice {
-    Logger logger = Logger.getLogger(" ");
     private final double totalPrice ;
     private final String name;
     private final String address ;
@@ -21,17 +21,17 @@ public class Invoice {
         String tt;
         ArrayList<Order> tmp = (ArrayList<Order>) Functions.getOrdersFromFile("orders.txt", customer.getId());
         tt ="\n "+ customer.getName()+"  "+ customer.getAddress()+"  "+"Total Price: "+ customer.totalInvoicePrice(tmp)+"\n";
-        logger.info(tt);
+        printing.printSomething(tt);
         double dis = (customer.totalInvoicePrice(tmp)*10)/100;
         tt = " The Discount: "+ dis+"\n";
-        System.out.println(tt);
+        printing.printSomething(tt);
         for (Order order:tmp){
             tt ="\n\t Id: "+ order.getOrderId() +"  Price: "+order.getTotalPrice()+"\n";
-            logger.info(tt);
+            printing.printSomething(tt);
             ArrayList<Product> tmp1 = (ArrayList<Product>) Functions.getProductsFromFile("products.txt", customer.getId(), String.valueOf(order.getOrderId()));
             for (Product product:tmp1){
                 tt ="\t\t"+product.getName()+"  "+ product.getMaterial()+"  "+ product.getArea()+"  "+product.getTreatment()+"\n";
-                logger.info(tt);
+                printing.printSomething(tt);
             }
         }
     }

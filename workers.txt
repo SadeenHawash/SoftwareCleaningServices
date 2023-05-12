@@ -1,8 +1,20 @@
-1 , Ahmad , 0599286453 , Available , Nablus/Fatayer Street
-2 , Mohammad , 0589394912 , Available , Nablus/Rafedia Street
-3 , Jalal , 0569100453 , Available , Ramallah
+1 , 0599286453 , null , Busy , null
+2 , 0589394912 , null , Busy , null
+3 , 0569100453 , null , Busy , null
+4 , 0599230220 , null , Busy , null
+5 , 0589794966 , null , Busy , null
+1 , Ahmad , 0599286453 , Busy , Nablus/Fatayer Street
+2 , Mohammad , 0589394912 , Busy , Nablus/Rafedia Street
+3 , Jalal , 0569100453 , Busy , Ramallah
 4 , Ali , 0599230220 , Available , Ramallah
 5 , Raed , 0589794966 , Available , Nablus/IbnKhaldoon Street
-12345 , Ameer , 0599897944 , Busy , Nablus
-12345 , Ameer , 0599897944 , Busy , Nablus
-12345 , Ameer , 0599897944 , Busy , Nablus
+1 , Ahmad , 0599286453 , Busy , Nablus/Fatayer Street
+2 , Mohammad , 0589394912 , Busy , Nablus/Rafedia Street
+3 , Jalal , 0569100453 , Busy , Ramallah
+4 , Ali , 0599230220 , Available , Ramallah
+5 , Raed , 0589794966 , Available , Nablus/IbnKhaldoon Street
+1 , Ahmad , 0599286453 , Busy , Nablus/Fatayer Street
+2 , Mohammad , 0589394912 , Busy , Nablus/Rafedia Street
+3 , Jalal , 0569100453 , Busy , Ramallah
+4 , Ali , 0599230220 , Available , Ramallah
+5 , Raed , 0589794966 , Available , Nablus/IbnKhaldoon Street

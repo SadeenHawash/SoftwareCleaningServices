@@ -4,16 +4,22 @@ import org.example.Order;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.example.Worker;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Track_Status {
 
-    private List<Order> orders;
-
-
+    private List<Order> orders = new ArrayList<>();
+    Order order = new Order();
     @Given("a list of orders with status {string}")
     public void a_list_of_orders_with_status(String status) {
         // Create a list of orders for testing
+        order.setStatus(Order.Status.WAITING);
+        order.setTotalPrice(320.6);
+        order.setCustomerId("12029027");
+        orders.add(order);
 
     }
 
@@ -24,8 +30,7 @@ public class Track_Status {
 
     @When("the order status is updated to {string}")
     public void the_order_status_is_updated_to(String status) {
-        // Update the status of the selected order
-
+        order.setStatus(Order.Status.IN_TREATMENT);
     }
 
     @Then("the order status should reflect {string}")
@@ -37,7 +42,7 @@ public class Track_Status {
 
     @When("an order is selected as completed")
     public void an_order_is_selected_as_completed() {
-
+        order.setStatus(Order.Status.COMPLETE);
     }
 }
 

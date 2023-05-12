@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 import java.util.*;
-import java.util.logging.Logger;
+
+import static org.example.Functions.printing;
 
 public class DistributeOrders {
-    static Logger logger = Logger.getLogger(" ");
     private final List<Order> waitingOrders;
     private final List<Worker> availableWorkers;
     private final String ordersFile;
@@ -20,15 +20,14 @@ public class DistributeOrders {
         loadWorkersFromFile();
         distributeOrders();
     }
-
     public void addWaitingOrder(Order order) {
-        clearFile("orders.txt");
+        //clearFile("orders.txt");
         waitingOrders.add(order);
         distributeOrders();
         saveOrdersToFile();
     }
     public void addAvailableWorker(Worker worker) {
-        clearFile("workers.txt");
+        //clearFile("workers.txt");
         Functions functions = new Functions();
         functions.workerList();
         availableWorkers.add(worker);
@@ -92,7 +91,7 @@ public class DistributeOrders {
 
             scanner.close();
         } catch (FileNotFoundException e) {
-            logger.info("Orders file not found.");
+            printing.printSomething("Orders file not found.");
         }
     }
 
@@ -106,7 +105,7 @@ public class DistributeOrders {
 
             writer.close();
         } catch (IOException e) {
-            logger.info("Error saving orders to file.");
+            printing.printSomething("Error saving orders to file.");
         }
     }
 
@@ -126,7 +125,7 @@ public class DistributeOrders {
 
             scanner.close();
         } catch (FileNotFoundException e) {
-            logger.info("Workers file not found.");
+            printing.printSomething("Workers file not found.");
         }
     }
 
@@ -140,17 +139,17 @@ public class DistributeOrders {
 
             writer.close();
         } catch (IOException e) {
-            logger.info("Error saving workers to file.");
+            printing.printSomething("Error saving workers to file.");
         }
     }
-    public static void clearFile(String fileName) {
+    public void clearFile(String fileName) {
         try {
             FileWriter writer = new FileWriter(fileName);
             writer.write("");
             writer.close();
-            logger.info("File contents cleared.");
+            printing.printSomething("File contents cleared.");
         } catch (IOException e) {
-            logger.info("An error occurred: " + e.getMessage());
+            printing.printSomething("An error occurred: " + e.getMessage());
         }
     }
 }

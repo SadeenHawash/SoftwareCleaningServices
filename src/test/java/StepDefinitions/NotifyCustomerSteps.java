@@ -22,7 +22,7 @@ public class NotifyCustomerSteps {
     }
     @When("the order is complete")
     public void the_order_is_complete() {
-        worker.setId("12345");
+        worker.setId("6");
         worker.setName("Ameer");
         worker.setAddress("Nablus");
         worker.setPhone("0599897944");

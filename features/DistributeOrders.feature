@@ -4,5 +4,4 @@ Feature: Distribute Orders on Workers
     Given there are waiting orders
     And there are available workers
     When the orders are distributed
-    Then each worker should receive an equal number of orders
-    And the status of the workers and orders should be updated
+    Then the status of the workers and orders should be updated

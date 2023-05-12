@@ -14,7 +14,7 @@ public class Worker {
     public Worker(int id, String name) {
         this.id = String.valueOf(id);
         this.name = name;
-        status = "available";
+        status = "Available";
         assignedOrders = new ArrayList<>();
     }
     public Worker() {

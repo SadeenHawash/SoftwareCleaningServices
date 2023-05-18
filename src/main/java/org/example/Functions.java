@@ -15,6 +15,7 @@ public class Functions {
     String tmp;
     boolean found;
     Admin admin = new Admin();
+    private static final String ENTER_NAME = "Enter New Name: ";
     static final String ORDER_FILE_NAME = "orders.txt";
     static final String CUSTOMER_FILE_NAME = "View.txt";
     static final String PRODUCT_FILE_NAME = "products.txt";
@@ -119,8 +120,7 @@ public class Functions {
         }
     }
     void addProductToFile(Product product) {
-        try {
-            FileWriter productsFile = new FileWriter(PRODUCT_FILE, true);
+        try (FileWriter productsFile = new FileWriter(PRODUCT_FILE, true)) {
             productsFile.append(product.getCustomerId()).append(" , ")
                     .append(String.valueOf(product.getOrderId())).append(" , ")
                     .append(product.getName()).append(" , ")
@@ -128,8 +128,6 @@ public class Functions {
                     .append(String.valueOf(product.getArea())).append(" , ")
                     .append(product.getTreatment()).append(" , ")
                     .append(product.getPicture()).append("\n");
-
-            productsFile.close();
         } catch (IOException e) {
             printing.printSomething("An error occurred: " + e.getMessage());
         }
@@ -278,15 +276,15 @@ public class Functions {
                 }
                 break;
             case 2:
-                 boolean found = false;
+                 boolean found1 = false;
                 updateCustomersList();
                 for(Customer customer1: customers){
                     if (id.equals(customer1.getId()) && password.equals(customer1.getPassword())) {
-                        found = true;
+                        found1= true;
                         break;
                     }
                 }
-                if(found){
+                if(found1){
                     while (x>0) {
                         customerPageList();
                         c = scanner.nextInt();
@@ -546,11 +544,10 @@ public class Functions {
         }
     }
     public void updateProduct(int n) throws IOException {
-        String tmp;
         for (Product product : products) {
             switch (n){
                 case 1:
-                    printing.printSomething("Enter New Name: ");
+                    printing.printSomething(ENTER_NAME);
                     tmp = scanner.next();
                     updateFile(PRODUCT_FILE, product.getName(), tmp);
                     product.setName(tmp);
@@ -572,33 +569,33 @@ public class Functions {
         }
     }
     public void updateCustomerProfile(int n) throws IOException {
-        String tmp;
+        String tmp1;
         for (Customer customer1 : customers) {
             if (customer1.getId().equals(id)) {
                 switch (n){
                     case 1:
-                        printing.printSomething("Enter New Name: ");
-                        tmp = scanner.next();
-                        updateFile(VIEW_FILE, customer1.getName(), tmp);
-                        customer1.setName(tmp);
+                        printing.printSomething(ENTER_NAME);
+                        tmp1 = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getName(), tmp1);
+                        customer1.setName(tmp1);
                         break;
                     case 2:
                         printing.printSomething("Enter New Phone: ");
-                        tmp = scanner.next();
-                        updateFile(VIEW_FILE, customer1.getPhone(), tmp);
-                        customer1.setPhone(tmp);
+                        tmp1 = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getPhone(), tmp1);
+                        customer1.setPhone(tmp1);
                         break;
                     case 3:
                         printing.printSomething("Enter New Address: ");
-                        tmp= scanner.next();
-                        updateFile(VIEW_FILE, customer1.getAddress(), tmp);
-                        customer1.setAddress(tmp);
+                        tmp1= scanner.next();
+                        updateFile(VIEW_FILE, customer1.getAddress(), tmp1);
+                        customer1.setAddress(tmp1);
                         break;
                     case 4:
                         printing.printSomething("Enter New Email: ");
-                        tmp = scanner.next();
-                        updateFile(VIEW_FILE, customer1.getEmail(), tmp);
-                        customer1.setEmail(tmp);
+                        tmp1 = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getEmail(), tmp1);
+                        customer1.setEmail(tmp1);
                         break;
                     default:    printing.printSomething(INVALID_CHOICE);
                 }
@@ -607,24 +604,24 @@ public class Functions {
     }
     public void updateWorkerProfile(int n) throws IOException {
         String fileWorker = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\workers.txt";
-        String tmp;
+        String tmp2;
         for (Worker worker : workers) {
             if (worker.getId().equals(id)) {
                 if (n == 1) {
-                    printing.printSomething("Enter New Name: ");
-                    tmp= scanner.next();
-                    updateFile(fileWorker, worker.getName(), tmp);
-                    worker.setName(tmp);
+                    printing.printSomething(ENTER_NAME);
+                    tmp2= scanner.next();
+                    updateFile(fileWorker, worker.getName(), tmp2);
+                    worker.setName(tmp2);
                 } else if (n == 2) {
                     printing.printSomething("Enter New Phone: ");
-                    tmp = scanner.next();
-                    updateFile(fileWorker, worker.getPhone(), tmp);
-                    worker.setPhone(tmp);
+                    tmp2 = scanner.next();
+                    updateFile(fileWorker, worker.getPhone(), tmp2);
+                    worker.setPhone(tmp2);
                 } else if (n == 3) {
                     printing.printSomething("Enter New Address: ");
-                    tmp = scanner.next();
-                    updateFile(fileWorker, worker.getAddress(), tmp);
-                    worker.setAddress(tmp);
+                    tmp2 = scanner.next();
+                    updateFile(fileWorker, worker.getAddress(), tmp2);
+                    worker.setAddress(tmp2);
                 } else printing.printSomething(INVALID_CHOICE);
             }
         }
@@ -693,17 +690,19 @@ public class Functions {
                 SPACE+ "\n----------------------------------------\n"+ENTER_CHOICE);
     }
     public static void deleteLineByValue(String filePath, String value) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
         StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            if (!line.contains(value)) {
-                sb.append(line).append("\n");
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.contains(value)) {
+                    sb.append(line).append("\n");
+                }
             }
+
+            writer.write(sb.toString());
         }
-        reader.close();
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
-        writer.write(sb.toString());
-        writer.close();
     }
+
 }

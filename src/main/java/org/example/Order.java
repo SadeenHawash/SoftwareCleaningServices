@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private int orderId;
+    private final int orderId;
     private double amountPaid;
     private double cashCollected;
     private Status status;
@@ -26,7 +26,6 @@ public class Order {
         String[] items = line.split(" , ");
         Order order = new Order(Integer.parseInt(items[1]));
         order.setCustomerId(items[0]);
-        //order.setOrderId(items[1]);
         worker.setId(items[2]);
         worker.setName(items[3]);
         order.setStatus(Status.valueOf(items[4]));

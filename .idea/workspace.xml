@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1182d5e2-96af-4c7f-9f30-a178a4886600" name="Changes" comment="newChanges">
+      <change afterPath="$PROJECT_DIR$/features/CustomerActions.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/CustomerActions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/GenerateInvoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/GenerateInvoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/NotifyCustomerSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/NotifyCustomerSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +71,7 @@
       <recent name="C:\Users\sadee\IdeaProjects\javaProjects\SoftwareCleaningServices" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
+  <component name="RunManager" selected="JUnit.TESTCLASS">
     <configuration name="Unnamed (1)" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.testOdder" />
       <module name="SoftwareCleaningServices" />
@@ -75,6 +82,86 @@
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="SoftwareCleaningServices" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Delete My Profile" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/features/CustomerActions.feature" />
+      <option name="GLUE" value="StepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="SoftwareCleaningServices" />
+      <option name="NAME_FILTER" value="^Delete My Profile$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Delete My Profile$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Delete My Profile" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Make an Order" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/features/CustomerActions.feature" />
+      <option name="GLUE" value="StepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="SoftwareCleaningServices" />
+      <option name="NAME_FILTER" value="^Make an Order$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Make an Order$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Make an Order" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Update My Profile" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/features/CustomerActions.feature" />
+      <option name="GLUE" value="StepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="SoftwareCleaningServices" />
+      <option name="NAME_FILTER" value="^Update My Profile$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Update My Profile$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Update My Profile" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: View Invoices" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/features/CustomerActions.feature" />
+      <option name="GLUE" value="StepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="SoftwareCleaningServices" />
+      <option name="NAME_FILTER" value="^View Invoices$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^View Invoices$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: View Invoices" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -93,11 +180,19 @@
     <list>
       <item itemvalue="Application.Unnamed (1)" />
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Cucumber Java.Scenario: Delete My Profile" />
+      <item itemvalue="Cucumber Java.Scenario: Make an Order" />
+      <item itemvalue="Cucumber Java.Scenario: Update My Profile" />
+      <item itemvalue="Cucumber Java.Scenario: View Invoices" />
       <item itemvalue="JUnit.TESTCLASS" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TESTCLASS" />
+        <item itemvalue="Cucumber Java.Scenario: Update My Profile" />
+        <item itemvalue="Cucumber Java.Scenario: View Invoices" />
+        <item itemvalue="Cucumber Java.Scenario: Delete My Profile" />
+        <item itemvalue="Cucumber Java.Scenario: Make an Order" />
       </list>
     </recent_temporary>
   </component>
@@ -173,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684400673939</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="newChanges">
+      <created>1684401233641</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684401233641</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -185,7 +287,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="newChanges" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1684399992336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$TESTCLASS.exec" NAME="TESTCLASS Coverage Results" MODIFIED="1684400777639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1684402165259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$TESTCLASS.exec" NAME="TESTCLASS Coverage Results" MODIFIED="1684416669201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

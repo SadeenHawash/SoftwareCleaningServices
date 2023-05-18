@@ -16,7 +16,7 @@ public class GenerateInvoice {
     @Given("a customer with a list of items to be cleaned")
     public void a_customer_with_a_list_of_items_to_be_cleaned() {
         customer = new Customer("1102345","AhmadShaker","0599231231","Nablus/Rafedia","AhmadShaker@gmail.com");
-        order = new Order();
+        order = new Order(1);
         Product product =new Product("Carpet", "Nylon",30.5F, "Yes"," ");
         Product product1 = new Product("Carpet",  "Nylon", 30.5F, "No"," ");
         order.addProduct(product); order.addProduct(product1);

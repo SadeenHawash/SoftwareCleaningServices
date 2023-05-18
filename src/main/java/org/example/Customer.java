@@ -12,11 +12,11 @@ public class Customer {
     private String email;
     List<Order> orders = new ArrayList<>();
     int numberOfOrders =0 ;
-    void setNumberOfOrders(int num){
+    public void setNumberOfOrders(int num){
         if(orders.isEmpty()) num = 0;
         this.numberOfOrders = num;
     }
-    int getNumberOfOrders(){
+    public int getNumberOfOrders(){
         return numberOfOrders;
     }
     public Customer(String id,String name,String phone,String address,String email) {

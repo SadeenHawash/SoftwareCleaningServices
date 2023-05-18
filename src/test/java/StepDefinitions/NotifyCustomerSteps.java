@@ -17,7 +17,7 @@ public class NotifyCustomerSteps {
     @Given("a customer has placed an order")
     public void a_customer_has_placed_an_order() {
         customer = new Customer("John Doe", "john.doe@example.com");
-        order = new Order();
+        order = new Order(7);
         customer.addOrder(order);
     }
     @When("the order is complete")

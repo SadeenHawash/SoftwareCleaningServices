@@ -69,7 +69,7 @@ public class login {
 
     @Then("Show message {string}")
     public void show_massege(String string) {
-        string="the password is wrong";
+        string ="the password is wrong";
         logger.log(Level.INFO,string);
     }
 

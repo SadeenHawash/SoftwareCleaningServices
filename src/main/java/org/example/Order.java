@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Order {
     private int orderId;
-    private int itemsDelivered;
     private double amountPaid;
     private double cashCollected;
     private Status status;
@@ -23,11 +22,11 @@ public class Order {
     }
 
     public static Order getOrderFromLine(String line) {
-        Order order = new Order();
         Worker worker = new Worker();
         String[] items = line.split(" , ");
+        Order order = new Order(Integer.parseInt(items[1]));
         order.setCustomerId(items[0]);
-        order.setOrderId(items[1]);
+        //order.setOrderId(items[1]);
         worker.setId(items[2]);
         worker.setName(items[3]);
         order.setStatus(Status.valueOf(items[4]));
@@ -35,30 +34,16 @@ public class Order {
         order.assignedWorker(worker);
         return  order;
     }
-
-    private void setOrderId(String orderId) {
-        this.orderId= Integer.parseInt(orderId);
-    }
-
     public enum Status {
         WAITING,
         IN_TREATMENT,
         COMPLETE
     }
-    public Order(){
-
-    }
     public Order(int orderId) {
         this.orderId = orderId;
         this.products = new ArrayList<>();
     }
-    public Order(int id, int itemsDelivered, double amountPaid, double cashCollected, String status) {
-        this.orderId = id;
-        this.itemsDelivered = itemsDelivered;
-        this.amountPaid = amountPaid;
-        this.cashCollected = cashCollected;
-        this.status = Status.valueOf(status);
-    }
+
     public Order(int ordId, String workerName, String workerId, double total, String status){
         Worker worker = new Worker(Integer.parseInt(workerId),workerName);
         this.orderId= ordId;

@@ -81,7 +81,7 @@ public class DistributeOrders {
                 Worker worker = new Worker();
                 worker.setId(workerId);
                 worker.setName(workerName);
-                Order order = new Order();
+                Order order = new Order(Integer.parseInt(parts[1]));
                 order.setCustomerId(customerId);
                 order.setStatus(Order.Status.valueOf(status));
                 order.setTotalPrice(Double.parseDouble(total));
@@ -140,16 +140,7 @@ public class DistributeOrders {
             printing.printSomething("Error saving workers to file.");
         }
     }
-    /*public void clearFile(String fileName) {
-        try {
-            FileWriter writer1 = new FileWriter(fileName);
-            writer1.write("");
-            writer1.close();
-            printing.printSomething("File contents cleared.");
-        } catch (IOException e) {
-            printing.printSomething("An error occurred: " + e.getMessage());
-        }
-    }*/
+
 }
 
 

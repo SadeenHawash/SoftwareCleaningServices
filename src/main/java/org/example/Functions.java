@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.io.IOException;
 
 public class Functions {
+
     static Printing printing = new Printing();
     Scanner scanner = new Scanner(System.in);
     Customer customer;
@@ -17,6 +18,7 @@ public class Functions {
     Admin admin = new Admin();
     static final String ORDER_FILE_NAME = "orders.txt";
     static final String CUSTOMER_FILE_NAME = "View.txt";
+    static final String PRODUCT_FILE_NAME = "products.txt";
     static final String SPACE = "|                                      |";
     static final String ENTER_CHOICE = "Enter your choice: ";
     static final String ENTER_PASSWORD= "\nEnter Password ";
@@ -187,9 +189,9 @@ public class Functions {
         printing.printSomething(ENTER_PASSWORD);
         password = scanner.next();
     }
-
+    int x =1;
     void adminPage() throws IOException {
-        while (true) {
+        while (x > 0) {
             adminList();
             printing.printSomething(ENTER_CHOICE);
             int c = scanner.nextInt();
@@ -293,31 +295,42 @@ public class Functions {
                 }
                 break;
             case 2:
+                 boolean found = false;
+                System.out.println(id +" "+ password);
                 updateCustomersList();
                 for(Customer customer1: customers){
-                    if(customer1.getId().equals(id)){
-                        if(customer1.getPassword().equals(password)) {
-                            while (true) {
-                                customerPageList();
-                                c = scanner.nextInt();
-                                customerOptions(c);
-                            }
+                    System.out.println(customer1.getId() +" "+ customer1.getPassword());
+                }
+
+                for(Customer customer1: customers){
+                    if(id.equals(customer1.getId()) && password.equals(customer1.getPassword())){
+                        found = true;
+                        /*if(customer1.getPassword().equals(password)) {
+
                         }else{
                             printing.printSomething("\nSigning in failed, Please check your entered password\n");
                             printing.printSomething(ENTER_PASSWORD);
                             password = scanner.next();
-                        }
-                    }else {
-                        printing.printSomething("\nThis account is not exist, Please Sign up.\n");
-                        customerSignUp();
+                        }*/
                     }
+                }
+                if(found){
+                    while (x>0) {
+                        customerPageList();
+                        c = scanner.nextInt();
+                        customerOptions(c);
+                    }
+                }
+                else{
+                    printing.printSomething("\nThis account is not exist, Please Sign up.\n");
+                    customerSignUp();
                 }
                 break;
             case 3:
                 for(Worker worker: workers){
                     if(worker.getId().equals(id)){
                         if(worker.getPassword().equals(password)) {
-                            while (true) {
+                            while (x > 0) {
                                 workerPageList();
                                 c = scanner.nextInt();
                                 workerOptions(c);
@@ -342,7 +355,7 @@ public class Functions {
         customers.clear();
         FileReader customersFileReader;
         try {
-            customersFileReader = new FileReader(VIEW_FILE);
+            customersFileReader = new FileReader("View.txt");
             BufferedReader lineReader = new BufferedReader(customersFileReader);
             while ((line = lineReader.readLine()) != null) {
                 if (line.isEmpty()) continue;
@@ -545,7 +558,13 @@ public class Functions {
                 }
                 break;
             case 6:
-                printing.printSomething("\n\n\n");
+                printing.printSomething("\t\t\n--- Delete profile! ---\n\nUr info will be Deleted & ur orders will be cancelled!!\nAre you sure? ");
+                if(scanner.next().equalsIgnoreCase("yes")){
+                    deleteLineByValue(CUSTOMER_FILE_NAME,id);
+                    deleteLineByValue(ORDER_FILE_NAME,id);
+                    deleteLineByValue(PRODUCT_FILE_NAME,id);
+                    printing.printSomething("\nAccount Successfully Deleted\n\n");
+                }
                 break;
             case 7:
                 signInFunction();
@@ -674,5 +693,33 @@ public class Functions {
                 "\n|        1. Update My Profile          |"+"\n|        2. View My Missions           |"+
                 "\n|        3. Update Order Status        |"+"\n|        4. Log Out                    |\n"+
                 SPACE+ "\n----------------------------------------\n"+ENTER_CHOICE);
+    }
+    public static void deleteLineByValue(String filePath, String value) throws IOException {
+        // Open the file for reading using a BufferedReader
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+
+        // Create a StringBuilder to hold the contents of the file
+        StringBuilder sb = new StringBuilder();
+
+        // Read the file line by line, and append each line to the StringBuilder,
+        // except for the line containing the value you want to delete
+        String line;
+        while ((line = reader.readLine()) != null) {
+            if (!line.contains(value)) {
+                sb.append(line).append("\n");
+            }
+        }
+
+        // Close the BufferedReader
+        reader.close();
+
+        // Open the file for writing using a BufferedWriter
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+
+        // Write the contents of the StringBuilder to the file using the BufferedWriter
+        writer.write(sb.toString());
+
+        // Close the BufferedWriter
+        writer.close();
     }
 }

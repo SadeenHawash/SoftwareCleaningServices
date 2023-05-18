@@ -71,10 +71,6 @@ public class Order {
         return orderId;
     }
 
-    public int getItemsDelivered() {
-        return itemsDelivered;
-    }
-
     public double getAmountPaid() {
         return amountPaid;
     }
@@ -113,10 +109,6 @@ public class Order {
     public void assignedWorker(Worker assignedWorker) {
         this.assignedWorker = assignedWorker;
         status = Status.IN_TREATMENT;
-    }
-
-    public Worker getAssignedWorker() {
-        return assignedWorker;
     }
 
     @Override

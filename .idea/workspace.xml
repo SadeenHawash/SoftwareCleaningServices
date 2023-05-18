@@ -4,31 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1182d5e2-96af-4c7f-9f30-a178a4886600" name="Changes" comment="testGitHubAction">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Printing.java" afterDir="false" />
+    <list default="true" id="1182d5e2-96af-4c7f-9f30-a178a4886600" name="Changes" comment="newChanges">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View.txt" beforeDir="false" afterPath="$PROJECT_DIR$/View.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/DistributeOrders.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/DistributeOrders.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/Generate_Statistics.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/Generate_Statistics.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orders.txt" beforeDir="false" afterPath="$PROJECT_DIR$/orders.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Discount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products.txt" beforeDir="false" afterPath="$PROJECT_DIR$/products.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/NotifyCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/NotifyCustomer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/OrderStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/OrderStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Printing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Printing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Worker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/DistributeOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/DistributeOrdersSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/DistributeOrdersSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/DistributeOrdersSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/GenerateInvoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/GenerateInvoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Generate_StatisticsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Generate_StatisticsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/NotifyCustomerSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/NotifyCustomerSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/OrderSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/OrderSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/workers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +60,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sadee\IdeaProjects\javaProjects\SoftwareCleaningServices" />
@@ -176,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683828926885</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="newChanges">
+      <created>1683923165694</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683923165694</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -184,9 +185,11 @@
     <MESSAGE value="branch(sadeen_dev)" />
     <MESSAGE value="changes(CheckBadSmells)" />
     <MESSAGE value="testGitHubAction" />
-    <option name="LAST_COMMIT_MESSAGE" value="testGitHubAction" />
+    <MESSAGE value="newChanges" />
+    <option name="LAST_COMMIT_MESSAGE" value="newChanges" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$TESTCLASS.exec" NAME="TESTCLASS Coverage Results" MODIFIED="1683919348297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1684399992336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$TESTCLASS.exec" NAME="TESTCLASS Coverage Results" MODIFIED="1683984257681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

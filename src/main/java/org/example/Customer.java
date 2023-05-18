@@ -1,6 +1,5 @@
 package org.example;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,29 +12,12 @@ public class Customer {
     private String email;
     List<Order> orders = new ArrayList<>();
     int numberOfOrders =0 ;
-    private BigDecimal totalSpentAmount;
-
-    public Customer(String name, BigDecimal totalSpentAmount) {
-        this.name = name;
-        this.totalSpentAmount = totalSpentAmount;
-    }
     void setNumberOfOrders(int num){
         if(orders.isEmpty()) num = 0;
         this.numberOfOrders = num;
     }
     int getNumberOfOrders(){
         return numberOfOrders;
-    }
-    public BigDecimal calculateDiscountedPrice(BigDecimal totalPrice) {
-        BigDecimal discountedPrice = totalPrice;
-        if (isFrequentCustomer()) {
-            BigDecimal discount = totalPrice.multiply(new BigDecimal("0.1"));
-            discountedPrice = totalPrice.subtract(discount);
-        }
-        return discountedPrice;
-    }
-    private boolean isFrequentCustomer() {
-        return totalSpentAmount.compareTo(new BigDecimal("500")) >= 0;
     }
     public Customer(String id,String name,String phone,String address,String email) {
         this.id= id;
@@ -103,6 +85,7 @@ public class Customer {
         customer1.setPhone(items[2]);
         customer1.setAddress(items[3]);
         customer1.setEmail(items[4]);
+        customer1.setPassword(items[5]);
         customer1.setNumberOfOrders(Integer.parseInt(items[6]));
         return  customer1;
     }

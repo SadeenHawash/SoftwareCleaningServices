@@ -96,8 +96,7 @@ public class DistributeOrders {
     }
 
     private void saveOrdersToFile() {
-        try {
-            FileWriter writer = new FileWriter(ordersFile);
+        try(FileWriter writer = new FileWriter(ordersFile)) {
 
             for (Order order : waitingOrders) {
                 writer.write(order.toString() + "\n");
@@ -144,9 +143,9 @@ public class DistributeOrders {
     }
     public void clearFile(String fileName) {
         try {
-            FileWriter writer = new FileWriter(fileName);
-            writer.write("");
-            writer.close();
+            FileWriter writer1 = new FileWriter(fileName);
+            writer1.write("");
+            writer1.close();
             printing.printSomething("File contents cleared.");
         } catch (IOException e) {
             printing.printSomething("An error occurred: " + e.getMessage());

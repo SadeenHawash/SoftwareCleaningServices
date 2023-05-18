@@ -64,7 +64,6 @@ public class login {
 
             u.setLogstate(false);
         }
-
         assertFalse(u.getLogstate());
     }
 

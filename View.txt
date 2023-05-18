@@ -1,6 +1,3 @@
 12029024 , sadeenHH , 0569100308 , Nablus , sadeenghawash593@gmail.com , 12345 , 5
-12029025 , NadeenHawash , 0569200320 , Nablus , NadeenGHawash@gmail.com , 12355 , 5
 12029026 , AyatAbuOmar , 0569306241 , Nablus/Burqa , ayatd42@gmail.com , 12445 , 0
-12029028 , Dana , 059940302 , Nablus , danaghaewash@gmail.com , 12345 , 0
 12029035 , Nadeen , 7598957807 , Nablus , ayatd42@gmail.com , 12346 , 0
-123456789 , sadeen , 0599897945 , NABLUS , sadeengh23@gmail.com , 123466 , 0

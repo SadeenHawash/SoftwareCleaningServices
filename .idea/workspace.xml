@@ -6,20 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1182d5e2-96af-4c7f-9f30-a178a4886600" name="Changes" comment="newChanges">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View.txt" beforeDir="false" afterPath="$PROJECT_DIR$/View.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders.txt" beforeDir="false" afterPath="$PROJECT_DIR$/orders.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products.txt" beforeDir="false" afterPath="$PROJECT_DIR$/products.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DistributeOrders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Functions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Printing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Printing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/DistributeOrdersSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/DistributeOrdersSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/GenerateInvoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/GenerateInvoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Track_Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +64,7 @@
       <recent name="C:\Users\sadee\IdeaProjects\javaProjects\SoftwareCleaningServices" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TESTCLASS">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration name="Unnamed (1)" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.testOdder" />
       <module name="SoftwareCleaningServices" />
@@ -177,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683923165694</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="newChanges">
+      <created>1684400673939</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684400673939</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -190,6 +186,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SoftwareCleaningServices$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1684399992336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$TESTCLASS.exec" NAME="TESTCLASS Coverage Results" MODIFIED="1683984257681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/SoftwareCleaningServices$TESTCLASS.exec" NAME="TESTCLASS Coverage Results" MODIFIED="1684400777639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="jacoco" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -102,7 +102,6 @@ public class DistributeOrders {
                 writer.write(order.toString() + "\n");
             }
 
-            writer.close();
         } catch (IOException e) {
             printing.printSomething("Error saving orders to file.");
         }
@@ -141,7 +140,7 @@ public class DistributeOrders {
             printing.printSomething("Error saving workers to file.");
         }
     }
-    public void clearFile(String fileName) {
+    /*public void clearFile(String fileName) {
         try {
             FileWriter writer1 = new FileWriter(fileName);
             writer1.write("");
@@ -150,7 +149,7 @@ public class DistributeOrders {
         } catch (IOException e) {
             printing.printSomething("An error occurred: " + e.getMessage());
         }
-    }
+    }*/
 }
 
 

@@ -296,22 +296,11 @@ public class Functions {
                 break;
             case 2:
                  boolean found = false;
-                System.out.println(id +" "+ password);
                 updateCustomersList();
                 for(Customer customer1: customers){
-                    System.out.println(customer1.getId() +" "+ customer1.getPassword());
-                }
-
-                for(Customer customer1: customers){
-                    if(id.equals(customer1.getId()) && password.equals(customer1.getPassword())){
+                    if (id.equals(customer1.getId()) && password.equals(customer1.getPassword())) {
                         found = true;
-                        /*if(customer1.getPassword().equals(password)) {
-
-                        }else{
-                            printing.printSomething("\nSigning in failed, Please check your entered password\n");
-                            printing.printSomething(ENTER_PASSWORD);
-                            password = scanner.next();
-                        }*/
+                        break;
                     }
                 }
                 if(found){

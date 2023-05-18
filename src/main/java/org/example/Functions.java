@@ -15,14 +15,17 @@ public class Functions {
     String tmp;
     boolean found;
     Admin admin = new Admin();
+    private static final String ENTER_NAME = "Enter New Name: ";
     static final String ORDER_FILE_NAME = "orders.txt";
     static final String CUSTOMER_FILE_NAME = "View.txt";
+    static final String PRODUCT_FILE_NAME = "products.txt";
     static final String SPACE = "|                                      |";
     static final String ENTER_CHOICE = "Enter your choice: ";
     static final String ENTER_PASSWORD= "\nEnter Password ";
     static final String INVALID_CHOICE = "Invalid choice! Please enter a valid choice.";
     static final String LINE = "----------------------------------------";
     private static final String VIEW_FILE = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\View.txt";
+    private static final String PRODUCT_FILE= "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\products.txt";
     private String id;
     private String password;
     private final ArrayList<Customer> customers = new ArrayList<>();
@@ -70,7 +73,6 @@ public class Functions {
                 printing.printSomething("\t\t- Customer ID: " + order.getCustomerId() +", Order ID: " + order.getOrderId() + ", Status: " + order.getStatus());
             }
         }
-
     }
     boolean searchId(String id) {
         boolean f = false;
@@ -86,7 +88,6 @@ public class Functions {
         }
         return f;
     }
-
     void addCustomerToFile(Customer customer) {
         try {
             FileWriter customersFile = new FileWriter(CUSTOMER_FILE_NAME, true);
@@ -102,9 +103,7 @@ public class Functions {
         } catch (IOException e) {
             printing.printSomething("An error occurred: " + e.getMessage());
         }
-
     }
-
     void addOrderToFile(Order order) {
         try {
             String orderFile = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\orders.txt";
@@ -119,12 +118,9 @@ public class Functions {
         } catch (IOException e) {
             printing.printSomething("An error occurred: " + e.getMessage());
         }
-
     }
     void addProductToFile(Product product) {
-        try {
-            String productFile = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\products.txt";
-            FileWriter productsFile = new FileWriter(productFile, true);
+        try (FileWriter productsFile = new FileWriter(PRODUCT_FILE, true)) {
             productsFile.append(product.getCustomerId()).append(" , ")
                     .append(String.valueOf(product.getOrderId())).append(" , ")
                     .append(product.getName()).append(" , ")
@@ -132,8 +128,6 @@ public class Functions {
                     .append(String.valueOf(product.getArea())).append(" , ")
                     .append(product.getTreatment()).append(" , ")
                     .append(product.getPicture()).append("\n");
-
-            productsFile.close();
         } catch (IOException e) {
             printing.printSomething("An error occurred: " + e.getMessage());
         }
@@ -152,9 +146,7 @@ public class Functions {
         } catch (IOException e) {
             printing.printSomething("An error occurred: " + e.getMessage());
         }
-
     }
-
     void customerSignUp() throws IOException {
         customer = new Customer();
         printing.printSomething("Enter your Id: ");
@@ -180,16 +172,15 @@ public class Functions {
             addCustomerToFile(customer);
         }
     }
-
     void inputs() {
         printing.printSomething("Enter Id: ");
         id = scanner.next();
         printing.printSomething(ENTER_PASSWORD);
         password = scanner.next();
     }
-
+    int x =1;
     void adminPage() throws IOException {
-        while (true) {
+        while (x > 0) {
             adminList();
             printing.printSomething(ENTER_CHOICE);
             int c = scanner.nextInt();
@@ -197,12 +188,10 @@ public class Functions {
                 viewCustomersAndWorkers();
             } else if (c == 2) {
                 viewBusinessStatistics();
-
             } else if (c == 3) {
                 viewBusinessReports();
             } else if (c == 4) {
                 viewAllOrders();
-
             } else if (c == 5) {
                 adminSendEmails();
             } else if (c == 6) {
@@ -212,7 +201,6 @@ public class Functions {
             } else printing.printSomething(INVALID_CHOICE);
         }
     }
-
     private void adminSendEmails() {
         String[] to = {"ayatd42@gmail.com", "sadeenghawash593@gmail.com"};
         String subject = "Testing Subject";
@@ -221,7 +209,6 @@ public class Functions {
                 "Payment when receiving.";
         NotifyCustomer.sendEmail(admin.getEmail(), admin.getEmailPassword(), to, subject, body);
     }
-
     private void viewBusinessReports() {
         updateCustomersList();
         updateOrdersList();
@@ -230,7 +217,6 @@ public class Functions {
                 "\n==========================================\n\n";
         printing.printSomething(tmp);
     }
-
     private void viewBusinessStatistics() {
         int totalDeliveredItems = 10;
         double totalCash = 5000;
@@ -242,7 +228,6 @@ public class Functions {
                 "\n-->Total Paid: $" + totalPaid+"\n-->Total Debts: $" + totalDebts+"\n============================================\n\n";
         printing.printSomething(tmp);
     }
-
     private void viewCustomersAndWorkers() {
         updateCustomersList();
         printing.printSomething("List of Customers: \n");
@@ -256,7 +241,6 @@ public class Functions {
             printing.printSomething(worker.getId() + "\t  "+worker.getName() + "  "+worker.getAddress() + "  "+worker.getPhone() + "  "+worker.getStatus() + "  \n");
         }
     }
-
     private void viewAllOrders() {
         updateCustomersList();
         for (Customer customer1 : customers) {
@@ -265,7 +249,7 @@ public class Functions {
             printing.printSomething(tmp);
             for (Order order : orders) {
                 printing.printSomething("\n"+order.getOrderId() + "  " +order.getStatus() + "  "+order.getTotalPrice() + "  \n");
-                products = (ArrayList<Product>) getProductsFromFile("products.txt", customer1.getId(), String.valueOf(order.getOrderId()));
+                products = (ArrayList<Product>) getProductsFromFile(PRODUCT_FILE_NAME, customer1.getId(), String.valueOf(order.getOrderId()));
                 for (Product product : products) {
                     printing.printSomething(product.getName() + "  "+product.getMaterial() + "  "+product.getArea() + "  "+product.getTreatment() + "  "+product.getPicture() + "  \n");
                 }
@@ -273,7 +257,6 @@ public class Functions {
             printing.printSomething("\n\n");
         }
     }
-
     void signInFunction() throws IOException {
         int c;
         signInPageList();
@@ -293,31 +276,31 @@ public class Functions {
                 }
                 break;
             case 2:
+                 boolean found1 = false;
                 updateCustomersList();
                 for(Customer customer1: customers){
-                    if(customer1.getId().equals(id)){
-                        if(customer1.getPassword().equals(password)) {
-                            while (true) {
-                                customerPageList();
-                                c = scanner.nextInt();
-                                customerOptions(c);
-                            }
-                        }else{
-                            printing.printSomething("\nSigning in failed, Please check your entered password\n");
-                            printing.printSomething(ENTER_PASSWORD);
-                            password = scanner.next();
-                        }
-                    }else {
-                        printing.printSomething("\nThis account is not exist, Please Sign up.\n");
-                        customerSignUp();
+                    if (id.equals(customer1.getId()) && password.equals(customer1.getPassword())) {
+                        found1= true;
+                        break;
                     }
+                }
+                if(found1){
+                    while (x>0) {
+                        customerPageList();
+                        c = scanner.nextInt();
+                        customerOptions(c);
+                    }
+                }
+                else{
+                    printing.printSomething("\nThis account is not exist, Please Sign up.\n");
+                    customerSignUp();
                 }
                 break;
             case 3:
                 for(Worker worker: workers){
                     if(worker.getId().equals(id)){
                         if(worker.getPassword().equals(password)) {
-                            while (true) {
+                            while (x > 0) {
                                 workerPageList();
                                 c = scanner.nextInt();
                                 workerOptions(c);
@@ -342,7 +325,7 @@ public class Functions {
         customers.clear();
         FileReader customersFileReader;
         try {
-            customersFileReader = new FileReader(VIEW_FILE);
+            customersFileReader = new FileReader(CUSTOMER_FILE_NAME);
             BufferedReader lineReader = new BufferedReader(customersFileReader);
             while ((line = lineReader.readLine()) != null) {
                 if (line.isEmpty()) continue;
@@ -373,7 +356,6 @@ public class Functions {
         }
 
     }
-
     public static void updateFile(String filePath, String oldValue, String newValue) throws IOException {
         RandomAccessFile file = new RandomAccessFile(filePath, "rw");
         String line;
@@ -388,7 +370,6 @@ public class Functions {
         }
         file.close();
     }
-
     public static void replaceLastValueInLine(String fileName, int lineNumber, String newValue) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             StringBuilder sb = new StringBuilder();
@@ -434,7 +415,6 @@ public class Functions {
         }
         return -1;
     }
-
     public static List<Product> getProductsFromFile(String fileName, String customerId, String orderId) {
         List<Product> products1 = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
@@ -545,7 +525,9 @@ public class Functions {
                 }
                 break;
             case 6:
-                printing.printSomething("\n\n\n");
+                printing.printSomething("\t\t\n--- Delete profile! ---\n\nUr info will be Deleted & ur orders will be cancelled!!\nAre you sure? ");
+                String str = scanner.next();
+                deleteCustomerProfile(str);
                 break;
             case 7:
                 signInFunction();
@@ -553,34 +535,67 @@ public class Functions {
             default: printing.printSomething(INVALID_CHOICE);
         }
     }
+    public void deleteCustomerProfile(String val) throws IOException {
+        if(val.equalsIgnoreCase("yes")){
+            deleteLineByValue(CUSTOMER_FILE_NAME,id);
+            deleteLineByValue(ORDER_FILE_NAME,id);
+            deleteLineByValue(PRODUCT_FILE_NAME,id);
+            printing.printSomething("\nAccount Successfully Deleted\n\n");
+        }
+    }
+    public void updateProduct(int n) throws IOException {
+        for (Product product : products) {
+            switch (n){
+                case 1:
+                    printing.printSomething(ENTER_NAME);
+                    tmp = scanner.next();
+                    updateFile(PRODUCT_FILE, product.getName(), tmp);
+                    product.setName(tmp);
+                    break;
+                case 2:
+                    printing.printSomething("Enter New Material: ");
+                    tmp = scanner.next();
+                    updateFile(PRODUCT_FILE, product.getMaterial(), tmp);
+                    product.setMaterial(tmp);
+                    break;
+                case 3:
+                    printing.printSomething("Enter New Area: ");
+                    tmp= scanner.next();
+                    updateFile(PRODUCT_FILE, String.valueOf(product.getArea()), tmp);
+                    product.setArea(Float.parseFloat(tmp));
+                    break;
+                default:    printing.printSomething(INVALID_CHOICE);
+            }
+        }
+    }
     public void updateCustomerProfile(int n) throws IOException {
-        String tmp;
+        String tmp1;
         for (Customer customer1 : customers) {
             if (customer1.getId().equals(id)) {
                 switch (n){
                     case 1:
-                        printing.printSomething("Enter New Name: ");
-                        tmp = scanner.next();
-                        updateFile(VIEW_FILE, customer1.getName(), tmp);
-                        customer1.setName(tmp);
+                        printing.printSomething(ENTER_NAME);
+                        tmp1 = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getName(), tmp1);
+                        customer1.setName(tmp1);
                         break;
                     case 2:
                         printing.printSomething("Enter New Phone: ");
-                        tmp = scanner.next();
-                        updateFile(VIEW_FILE, customer1.getPhone(), tmp);
-                        customer1.setPhone(tmp);
+                        tmp1 = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getPhone(), tmp1);
+                        customer1.setPhone(tmp1);
                         break;
                     case 3:
                         printing.printSomething("Enter New Address: ");
-                        tmp= scanner.next();
-                        updateFile(VIEW_FILE, customer1.getAddress(), tmp);
-                        customer1.setAddress(tmp);
+                        tmp1= scanner.next();
+                        updateFile(VIEW_FILE, customer1.getAddress(), tmp1);
+                        customer1.setAddress(tmp1);
                         break;
                     case 4:
                         printing.printSomething("Enter New Email: ");
-                        tmp = scanner.next();
-                        updateFile(VIEW_FILE, customer1.getEmail(), tmp);
-                        customer1.setEmail(tmp);
+                        tmp1 = scanner.next();
+                        updateFile(VIEW_FILE, customer1.getEmail(), tmp1);
+                        customer1.setEmail(tmp1);
                         break;
                     default:    printing.printSomething(INVALID_CHOICE);
                 }
@@ -589,24 +604,24 @@ public class Functions {
     }
     public void updateWorkerProfile(int n) throws IOException {
         String fileWorker = "C:\\Users\\sadee\\IdeaProjects\\javaProjects\\SoftwarePro\\workers.txt";
-        String tmp;
+        String tmp2;
         for (Worker worker : workers) {
             if (worker.getId().equals(id)) {
                 if (n == 1) {
-                    printing.printSomething("Enter New Name: ");
-                    tmp= scanner.next();
-                    updateFile(fileWorker, worker.getName(), tmp);
-                    worker.setName(tmp);
+                    printing.printSomething(ENTER_NAME);
+                    tmp2= scanner.next();
+                    updateFile(fileWorker, worker.getName(), tmp2);
+                    worker.setName(tmp2);
                 } else if (n == 2) {
                     printing.printSomething("Enter New Phone: ");
-                    tmp = scanner.next();
-                    updateFile(fileWorker, worker.getPhone(), tmp);
-                    worker.setPhone(tmp);
+                    tmp2 = scanner.next();
+                    updateFile(fileWorker, worker.getPhone(), tmp2);
+                    worker.setPhone(tmp2);
                 } else if (n == 3) {
                     printing.printSomething("Enter New Address: ");
-                    tmp = scanner.next();
-                    updateFile(fileWorker, worker.getAddress(), tmp);
-                    worker.setAddress(tmp);
+                    tmp2 = scanner.next();
+                    updateFile(fileWorker, worker.getAddress(), tmp2);
+                    worker.setAddress(tmp2);
                 } else printing.printSomething(INVALID_CHOICE);
             }
         }
@@ -645,7 +660,6 @@ public class Functions {
                 signInFunction();
                 break;
             default:    printing.printSomething(INVALID_CHOICE);
-
         }
     }
     public void adminList(){
@@ -675,4 +689,20 @@ public class Functions {
                 "\n|        3. Update Order Status        |"+"\n|        4. Log Out                    |\n"+
                 SPACE+ "\n----------------------------------------\n"+ENTER_CHOICE);
     }
+    public static void deleteLineByValue(String filePath, String value) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.contains(value)) {
+                    sb.append(line).append("\n");
+                }
+            }
+
+            writer.write(sb.toString());
+        }
+    }
+
 }

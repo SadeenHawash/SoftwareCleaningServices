@@ -50,12 +50,13 @@ public class Worker {
     public void setOrders(List<Order> orders) {
         this.assignedOrders = orders;
     }
-    public void updateStatus() {
+    public String updateStatus() {
         if (assignedOrders.isEmpty()) {
             status = "Available";
         } else {
             status = "Busy";
         }
+        return status;
     }
     public String getStatus() {
         return status;

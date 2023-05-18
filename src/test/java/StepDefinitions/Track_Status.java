@@ -4,15 +4,14 @@ import org.example.Order;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.Worker;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Track_Status {
 
-    private List<Order> orders = new ArrayList<>();
-    Order order = new Order();
+    private final List<Order> orders = new ArrayList<>();
+    Order order = new Order(1);
     @Given("a list of orders with status {string}")
     public void a_list_of_orders_with_status(String status) {
         // Create a list of orders for testing

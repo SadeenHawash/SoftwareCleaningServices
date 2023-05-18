@@ -17,7 +17,6 @@ public class Printing {
             }
         });
 
-        // Remove the default console handler and add the custom one
         LOGGER.setUseParentHandlers(false);
         LOGGER.addHandler(consoleHandler);
     }
